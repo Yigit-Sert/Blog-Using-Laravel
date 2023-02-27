@@ -10,19 +10,14 @@
 
 </head>
 <body>
-    <article>
-        <h1><a href="/posts/first_post">First Post</a></h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat in pariatur soluta! Atque dolorum ex excepturi fugit harum molestiae quidem saepe? Earum quod reiciendis voluptas! Assumenda eaque esse quisquam ullam!</p>
-    </article>
 
+    <?php foreach ($posts as $post) : ?>
     <article>
-        <h1><a href="/posts/second_post">Second Post</a></h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat in pariatur soluta! Atque dolorum ex excepturi fugit harum molestiae quidem saepe? Earum quod reiciendis voluptas! Assumenda eaque esse quisquam ullam!</p>
-    </article>
+        <h1><?= $post->title; ?></h1>
 
-    <article>
-        <h1><a href="/posts/third_post">Third Post</a></h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat in pariatur soluta! Atque dolorum ex excepturi fugit harum molestiae quidem saepe? Earum quod reiciendis voluptas! Assumenda eaque esse quisquam ullam!</p>
+        <div><?= $post->body; ?></div>
     </article>
+    <?php endforeach; ?>
+
 </body>
 </html>
