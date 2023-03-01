@@ -11,7 +11,9 @@
 </head>
 <body>
 <article>
-    <?= $post; ?>
+    <h1>
+        <?= $post; ?>
+    </h1>
 </article>
 
 <a href="/">Go Back</a>
