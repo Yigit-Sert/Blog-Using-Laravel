@@ -18,25 +18,8 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
 
-//    allows to fetch all of the files on the posts directory
-    $files = File::files(resource_path("posts"));
-
-    $posts = [];
-
-    foreach ($files as $file){
-        $document = YamlFrontMatter::parseFile($file);
-        $posts[] = new Post(
-            $document->title,
-            $document->excerpt,
-            $document->date,
-            $document->body(),
-            $document->slug
-        );
-    }
-
-
-    return view('posts', [
-        'posts' => $posts
+    return view('posts', [  //  pass them into the view
+        'posts' => Post::all()
     ]);
 });
 
