@@ -26,7 +26,8 @@ class Post
 
     public static function all()
     {
-        return collect(File::files(resource_path("posts")))   // find every files in posts directory and collect them into collection file
+        return cache()->rememberForever('posts.all', function () {
+            return collect(File::files(resource_path("posts")))   // find every files in posts directory and collect them into collection file
             ->map(fn($file) => YamlFrontMatter::parseFile($file))   //  map over each item parse into a document
             ->map(fn($document) => new Post(    //  map over second time and build Post object
                 $document->title,
@@ -34,7 +35,9 @@ class Post
                 $document->date,
                 $document->body(),
                 $document->slug
-            ));
+            ))
+                ->sortByDesc('date');
+        });
     }
 
     public static function find($slug)
