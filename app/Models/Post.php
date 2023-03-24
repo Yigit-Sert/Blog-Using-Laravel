@@ -10,8 +10,8 @@ class Post extends Model
     use HasFactory;
 
     protected $guarded = ['id'];    //  everything is fillable except...
-//    protected $fillable = ['title', 'excerpt', 'body']; //  id is optional and if it is added, inserted value will be set
 
+    protected $with = ['category', 'author'];
     public function category(){
         return $this->belongsTo(Category::class);
     }
